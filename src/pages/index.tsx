@@ -2,9 +2,25 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import { Input, Button } from 'antd'
+import { useState } from 'react'
+import AuthServices from '@/services/authServices'
 
 
 export default function Home() {
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const handleLogin=()=>{
+    AuthServices.login({email:email,password:password}).then((response)=>{
+      console.log("response",response)
+    }).catch((error)=>{
+      console.log(error)
+    })
+    AuthServices.GetTest().then((response)=>{
+      console.log("response test",response)
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
   return (
     <>
       <Head>
@@ -24,9 +40,9 @@ export default function Home() {
             </div>
             <div className="row-form">
               <div className="login-form">
-                <Input placeholder='Username' size='large' />
-                <Input.Password placeholder="input password" />
-                <Button type='primary' style={{ width: "100%" }}>Login</Button>
+                <Input placeholder='Username' size='large' value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <Input.Password placeholder="input password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                <Button type='primary' style={{ width: "100%" }} onClick={handleLogin}>Login</Button>
               </div>
             </div>
 
