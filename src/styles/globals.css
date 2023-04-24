@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
 }
+
 /*****************General **************/
 body {
   background: white;
@@ -12,6 +13,7 @@ body {
   line-height: 1.75;
   color: #000000;
 }
+
 p,
 h1,
 h2,
@@ -24,6 +26,7 @@ h6 {
   font-weight: 400;
   line-height: 1.3;
 }
+
 h1 {
   font-size: 4.209rem;
 }
@@ -43,14 +46,17 @@ h4 {
 h5 {
   font-size: 1.333rem;
 }
-h6{
+
+h6 {
   font-size: 1.111rem;
 }
-.row-form{
+
+.row-form {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 }
+
 /***************** Login **************/
 .login-container {
   display: flex;
@@ -58,35 +64,56 @@ h6{
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: linear-gradient(90deg, rgba(0,120,215,1) 1%, rgba(255,192,0,1) 100%);
 }
 
 
-.login-form{
+.login-form {
   margin-top: 5%;
   gap: 30px;
   padding-bottom: 10px;
 }
-.login-form input{
+
+.login-form input {
   margin-bottom: 10px;
 }
-.login-form button{
+
+.login-form button {
   margin-top: 5%;
 }
+
 .login-card img {
   margin-top: 20px;
   width: 80px;
   height: 80px;
 }
+
+@media only screen and (max-width: 414px) {
+
+  .login-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 100% !important;
+    height: 30%;
+    padding: 15px;
+    background-color: white;
+    border-radius: 30px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
 
   .login-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    width: 90%;
+    width: 95%;
     height: 40%;
     padding: 15px;
+    background-color: white;
+    border-radius: 30px;
   }
 }
+
 @media only screen and (max-width: 1200px) {
 
   .login-card {
@@ -95,14 +122,19 @@ h6{
     width: 60%;
     height: 50%;
     padding: 15px;
+    background-color: white;
+    border-radius: 30px;
   }
 }
+
 @media only screen and (min-width: 1200px) {
-.login-card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 30%;
-  height: 50% !important;
-  padding: 20px;
-}
+  .login-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 30%;
+    height: 50% !important;
+    padding: 20px;
+    background-color: white;
+    border-radius: 30px;
+  }
 }
