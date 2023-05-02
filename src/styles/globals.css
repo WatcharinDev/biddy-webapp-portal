@@ -57,6 +57,11 @@ h6 {
   margin-bottom: 10px;
 }
 
+.clear-mp {
+  margin: 0px;
+  padding: 0px;
+}
+
 /***************** Login **************/
 .login-container {
   display: flex;
@@ -64,9 +69,8 @@ h6 {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(90deg, rgba(0,120,215,1) 1%, rgba(255,192,0,1) 100%);
+  background: linear-gradient(90deg, rgba(0, 120, 215, 1) 1%, rgba(255, 192, 0, 1) 100%);
 }
-
 
 .login-form {
   margin-top: 5%;
@@ -88,6 +92,86 @@ h6 {
   height: 80px;
 }
 
+/**********************Side Menu*************************/
+.menu-container {
+  background-color: #cccccc;
+  height: 100vh;
+}
+
+.menu-navbar {
+  background-color: rgba(0, 120, 215, 1);
+  height: 5vh;
+}
+
+.menu-body {
+  display: flex;
+  height: 95vh;
+}
+
+.menu-side {
+  width: 75px;
+  padding: 10px;
+  background-color:  rgba(255, 192, 0, 1);
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  justify-content: space-between;
+
+}
+
+.menu-item {
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+  width: 50px;
+  align-items: center;
+  transition: .10s;
+  padding: auto;
+  background-color: rgba(255, 255, 255, 255);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  color: rgba(0, 120, 215, 1);
+}
+
+.menu-item svg {
+  font-size: 50px;
+}
+
+.menu-item h6 {
+  opacity: 0;
+  visibility: 0;
+  transition: .3s;
+}
+/*************** Side Menu Hover************************/
+
+.menu-side:hover {
+  width: 200px;
+  padding: 10px;
+  transition: .3s;
+  color:rgba(255, 192, 0, 1);
+}
+.menu-side:hover h6 {
+  color:rgba(0, 120, 215, 1);
+}
+.menu-side:hover .menu-item h6 {
+  opacity: 1;
+  visibility: 1;
+  transition: .3s;
+}
+.menu-item:hover{
+  background-color: rgba(0, 120, 215, 1);
+}
+.menu-item:hover svg{
+  color:#FFFFFFFF;
+}
+.menu-item:hover h6{
+  color:#FFFFFFFF;
+}
+.menu-side:hover .menu-item{
+    width: 100%;
+}
 @media only screen and (max-width: 414px) {
 
   .login-card {

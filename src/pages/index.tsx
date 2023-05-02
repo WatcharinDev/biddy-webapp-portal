@@ -4,22 +4,33 @@ import styles from '@/styles/Home.module.css'
 import { Input, Button } from 'antd'
 import { useState } from 'react'
 import AuthServices from '@/services/authServices'
-
-
+import { signIn, useSession, getSession, getCsrfToken, signOut, } from 'next-auth/react'
+import { setAuthData } from '@/lib/auth'
+import { useRouter } from "next/router";
 export default function Home() {
+  const router = useRouter();
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
-  const handleLogin=()=>{
-    AuthServices.login({email:email,password:password}).then((response)=>{
-      console.log("response",response)
-    }).catch((error)=>{
-      console.log(error)
-    })
-    AuthServices.GetTest().then((response)=>{
-      console.log("response test",response)
-    }).catch((error)=>{
-      console.log(error)
-    })
+  const handleLogin = async () => {
+    // const res = await signIn('credentials', {
+    //   redirect: true,
+    //   email: email,
+    //   password: password,
+    // });
+    const resp = await fetch("https://biddy-backend-api.vercel.app/api/auth/signin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, password: password }),
+    });
+    const user = await resp.json();
+    if (user) {
+      router.push("/home")
+      setAuthData(user)
+    }
+
   }
   return (
     <>
@@ -40,8 +51,8 @@ export default function Home() {
             </div>
             <div className="row-form">
               <div className="login-form">
-                <Input placeholder='Username' size='large' value={email} onChange={(e)=>setEmail(e.target.value)} />
-                <Input.Password placeholder="input password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                <Input placeholder='Username' size='large' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <Input.Password placeholder="input password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <Button type='primary' style={{ width: "100%" }} onClick={handleLogin}>Login</Button>
               </div>
             </div>
