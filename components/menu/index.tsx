@@ -4,8 +4,7 @@ import menus from './menuConfig';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { removeAuthData } from '@/lib/auth';
-import { useRouter } from 'next/router';
-
+import Avatar from '@mui/material/Avatar';
 interface Props {
     children: React.ReactNode;
 }
@@ -13,11 +12,21 @@ interface Props {
 const SideMenu: NextPage<Props> = ({ children }) => {
     const handleSignOut = () => {
         removeAuthData()
-        window.location.href="/"
+        window.location.href = "/"
     }
     return (
         <div className="menu-container">
             <div className="menu-navbar">
+                <div className="biddy-logo">
+                    <h4 className='clear-mp'>Biddy</h4>
+                </div>
+                <div className="menu-user">
+                    <Avatar
+                        alt="Remy Sharp"
+                        src="/static/images/avatar/1.jpg"
+                        sx={{ width: 40, height: 40 }}
+                    />
+                </div>
 
             </div>
             <div className="menu-body">
@@ -25,7 +34,7 @@ const SideMenu: NextPage<Props> = ({ children }) => {
                     <ul>
                         {
                             menus.map((value, index) => (
-                                <li className="menu-item">
+                                <li className="menu-item" key={index}>
                                     <value.icon />
                                     <h6 className="clear-mp">{value.title}</h6>
                                 </li>
